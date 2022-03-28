@@ -7,13 +7,14 @@
 
 using std::cout;
 
-const std::string app_name{"qn"};
-const std::string app_version{"0.2.0"};
-const std::string help_msg{R"(Usage: qn [OPTIONS]... [TERMS]...
+const std::string app_name{"yap++"};
+const std::string app_version{"0.1.0"};
+const std::string help_msg{R"(Usage: yap++ [OPTIONS]... [TERMS]...
 
 Options:
-  -h, --help       Display this help message and exit
-  -v, --version    Display the current app version)"};
+  -i, --interactive    Start interactive session
+  -h, --help           Display this help message and exit
+  -v, --version        Display the current app version)"};
 
 void print_help()
 {
@@ -46,7 +47,7 @@ int main(int argc, char **argv)
 		{
 			print_version();
 		}
-		else if (std::string_view(argv[1]) == "-i" or std::string_view(argv[1]) == "--inter")
+		else if (std::string_view(argv[1]) == "-i" or std::string_view(argv[1]) == "--interactive")
 		{
 			interactive_mode();
 		}
@@ -58,7 +59,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		std::unique_ptr<std::vector<std::string_view> arguments(argv + 1, argv + argc);
+		std::vector<std::string_view> arguments(argv + 1, argv + argc);
 		Args args(arguments);
 
 		if (!args.status_[1] and !args.status_[2])
