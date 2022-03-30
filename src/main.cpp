@@ -13,6 +13,8 @@ const std::string help_msg{R"(Usage: yap++ [OPTIONS]... [TERMS]...
 
 Options:
   -i, --interactive    Start interactive session
+  -o, --output         Name of the output file
+  -w, --watch          Automatically retranspile each time changes happen on the input file
   -h, --help           Display this help message and exit
   -v, --version        Display the current app version)"};
 

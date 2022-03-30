@@ -10,7 +10,7 @@ void Args::parse_args()
 {
 	for (const auto& arg: args_)
 	{
-		if (arg == "-e" or arg == "--exact")
+		if (arg == "-o" or arg == "--output")
 		{
 			status_ = true;
 			continue;
