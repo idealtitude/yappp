@@ -4,12 +4,15 @@
 #include <string>
 #include <regex>
 #include <map>
+#include <optional>
 
-const std::map<std::string, std::regex> tokens_{
-	{std::string("t_empty"), std::regex("^ *$")},
-	{std::string("t_comment"), std::regex("^--- *.*$")},
-	{std::string("t_indent"), std::regex("^\\t+")},
-	{std::string("t_attributes"), std::regex(R"((#|\.|[a-z0-9-]+)`(.*?)`)")}
+std::map<std::string, std::string> tokens_{
+	{std::string("t_empty"), std::string("^ *$")},
+	{std::string("t_comment"), std::string("^--- *.*$")},
+	{std::string("t_indent"), std::string(R"(^\t+)")},
+	{std::string("t_attributes"), std::string(R"((#|\.|[a-z0-9-]+)`(.*?)`)")}
 };
+
+std::optional<std::smatch> t_match(const std::string& subject, const std::string& token);
 
 #endif // TOKENS_H

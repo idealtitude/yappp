@@ -3,9 +3,12 @@
 
 #include <vector>
 #include <string_view>
-//#include <memory>
+#include <map>
+#include <variant>
+#include <memory>
 
 using Svec = std::vector<std::string_view>;
+using Appargs = std::map<std::string, std::variant<std::string, bool>>;
 
 class Args
 {
@@ -16,8 +19,11 @@ class Args
 
 	bool status_;
 
+	std::unique_ptr<Appargs> ret_appargs();
+
 	private:
 	Svec args_;
+	Appargs appargs_;
 
 	void parse_args();
 };

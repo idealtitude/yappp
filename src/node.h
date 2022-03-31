@@ -16,15 +16,15 @@
 
 struct Node
 {
-	public:
-	Node();
+	Node() = delete;
+	Node(const std::string& tag);
 	~Node() = default;
 
-	std::string name_;
+	std::string tag_;
 	std::map<std::string, std::string> attributes_;
 	bool autoclose_; // Autoclosing tags like <input />
-	std::variant<std::string, std::reference_wrapper<Node>> text_;
-	std::optional<std::reference_wrapper<Node>> parent;
+	std::variant<std::string, std::reference_wrapper<Node>> innerHTML_;
+	std::optional<std::reference_wrapper<Node>> parent_;
 	std::optional<std::vector<std::reference_wrapper<Node>>> children_;
 	std::optional<std::reference_wrapper<Node>> sibling_;
 	bool state_; // True → open, False → closed

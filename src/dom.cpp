@@ -1,4 +1,5 @@
 #include "dom.h"
 
-Dom::Dom(): dom_{}
+Dom::Dom():
+	tree_{}
 {}

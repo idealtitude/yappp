@@ -7,16 +7,14 @@
 
 #include "node.h"
 #include <stack>
-#include <functional>
+//#include <functional>
 
-class Dom
+struct Dom
 {
-	public:
 	Dom();
 	~Dom() = default;
 
-	private:
-	std::stack<std::reference_wrapper<Node>> dom_;
+	std::stack<Node> tree_;
 };
 
 #endif // DOM_H

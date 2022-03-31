@@ -101,6 +101,10 @@ void Futil::get_file_content()
 
 void Futil::set_file_content()
 {
+
+	std::fstream file_ofs;
+	file_ofs.open(file_, std::fstream::out|std::fstream::trunc);
+
 	if (!is_writable())
 	{
 		errormsg_ = "\033[31mError:\033[0m The file " + std::string(file_) + " is not writable; check its permissions\n";
@@ -108,9 +112,6 @@ void Futil::set_file_content()
 	}
 	else
 	{
-		std::fstream file_ofs;
-		file_ofs.open(file_, std::fstream::out);
-
 		if (!file_ofs.is_open())
 		{
 			errormsg_ = "\033[31mError:\033[0m Can not open " + std::string(file_) + '\n';

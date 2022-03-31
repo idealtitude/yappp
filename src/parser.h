@@ -3,16 +3,18 @@
 
 #include "dom.h"
 #include <string>
+#include <memory>
 
 class Parser
 {
 	public:
 	Parser() = delete;
-	Parser(const std::vector<std::string>& lines);
+	Parser(const std::vector<std::string>& lines, std::shared_ptr<Dom> domtree);
 	~Parser() = default;
 
 	private:
-	Dom tree;
+	std::vector<std::string> lines_;
+	std::shared_ptr<Dom> dom_tree;
 };
 
 #endif // PARSER_H
