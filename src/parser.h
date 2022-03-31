@@ -2,6 +2,7 @@
 #define PARSER_H
 
 #include "dom.h"
+#include "node.h"
 #include <string>
 #include <memory>
 
@@ -9,8 +10,10 @@ class Parser
 {
 	public:
 	Parser() = delete;
-	Parser(const std::vector<std::string>& lines, std::shared_ptr<Dom> domtree);
+	Parser(std::unique_ptr<std::vector<std::string>> lines, std::shared_ptr<Dom> domtree);
 	~Parser() = default;
+
+	void parse();
 
 	private:
 	std::vector<std::string> lines_;

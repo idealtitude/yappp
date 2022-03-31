@@ -74,29 +74,26 @@ int main(int argc, char **argv)
 
 		std::unique_ptr<std::map<std::string, std::variant<std::string, bool>>> app_args = args.ret_appargs();
 
-		std::variant<std::string, bool> input = (*app_args)["input"];
+		Futil file_in{fs::path(std::get<std::string>((*app_args)["input"]))};
 
-		cout << std::get<std::string>(input) << '\n';
+		if (!file_in.status_)
+		{
+			cout << file_in.errormsg_;
+			return 1;
+		}
 
-		// Futil file_in{fs::path(std::get<std::string>(*app_args["input"]))};
+		file_in.get_file_content();
 
-		// if (!file_in.status_)
-		// {
-		// 	cout << file_in.errormsg_;
-		// 	return 1;
-		// }
+		if (!file_in.status_)
+		{
+			cout << file_in.errormsg_;
+			return 1;
+		}
 
-		// file_in.get_file_content();
-
-		// if (!file_in.status_)
-		// {
-		// 	cout << file_in.errormsg_;
-		// 	return 1;
-		// }
-
-		// Dom dom;
-		// std::shared_ptr<Dom> domtree = std::make_shared<Dom>(dom);
-		// Parser parser(file_in.content_, domtree);
+		Dom dom;
+		std::shared_ptr<Dom> domtree = std::make_shared<Dom>(dom);
+		std::unique_ptr<std::vector<std::string>> lines = std::make_unique<std::vector<std::string>>(file_in.content_);
+		Parser parser(lines, domtree);
 	}
 
 	return 0;
