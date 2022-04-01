@@ -92,8 +92,11 @@ int main(int argc, char **argv)
 
 		Dom dom;
 		std::shared_ptr<Dom> domtree = std::make_shared<Dom>(dom);
-		std::unique_ptr<std::vector<std::string>> lines = std::make_unique<std::vector<std::string>>(file_in.content_);
-		Parser parser(lines, domtree);
+		//std::unique_ptr<std::vector<std::string>> lines = std::make_unique<std::vector<std::string>>(file_in.content_);
+		Parser parser(file_in.content_, domtree);
+		parser.parse();
+
+		std::cout << "dom tree size: " << parser.get_stack_size() << '\n';
 	}
 
 	return 0;

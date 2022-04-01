@@ -14,6 +14,7 @@ struct Dom
 	Dom();
 	~Dom() = default;
 
+	std::string doctype_;
 	std::stack<Node> tree_;
 };
 

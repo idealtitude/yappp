@@ -28,6 +28,7 @@ struct Node
 	std::optional<std::vector<std::reference_wrapper<Node>>> children_;
 	std::optional<std::reference_wrapper<Node>> sibling_;
 	bool state_; // True → open, False → closed
+	unsigned int indent_;
 };
 
 #endif // NODE_H

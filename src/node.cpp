@@ -8,5 +8,6 @@ Node::Node(const std::string& tag):
 	parent_{},
 	children_{},
 	sibling_{},
-	state_{false}
+	state_{false},
+	indent_{0}
 {}
